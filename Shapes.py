@@ -5,14 +5,16 @@
 
 import tkinter
 import time
-from tkinter.constants import X, Y
+import random
+from tkinter.constants import TRUE, X, Y
 #window
-window = tkinter.Tk()
+Window1 = tkinter.Tk()
+Window1.title('Shapes')
 #canvas
-c = tkinter.Canvas(window, bg="black", height=300, width=300)
-c.pack()
+Canvas1 = tkinter.Canvas(Window1, bg="black", height=300, width=300)
+Canvas1.pack()
 # draw lines
-line = c.create_line(50, 50, 50, 100, fill = 'red', width = 1.25)
+#line = c.create_line(50, 50, 50, 100, fill = 'red', width = 1.25)
 
 #draw square(painful method)
 # sq1 = c.create_line(100, 50, 100, 100, fill = 'green', width = 1.25)
@@ -22,34 +24,42 @@ line = c.create_line(50, 50, 50, 100, fill = 'red', width = 1.25)
 
 
 #draw square(easier-ish method)
-sqr1 = c.create_rectangle(200, 0, 250, 50, outline='blue', width = 1.25)
+#sqr1 = c.create_rectangle(200, 0, 250, 50, outline='blue', width = 1.25)
+
 #draw circle
-circ1 = 0
-circ2 = 250
-circ3 = 50
-circ4 = 300
-circle = c.create_oval(circ1, circ2, circ3, circ4, outline='pink', width = 1.25)
+CircleX1 = 0
+CircleY1 = 150
+CircleX2 = 50
+CircleY2 = 200
+Circle1 = Canvas1.create_oval(CircleX1, CircleY1, CircleX2, CircleY2, outline='pink', width = 1.25)
+LabelText = 'X=' + str(CircleX1) + ' , Y=' + str(CircleY1) + '    '
+label1 = tkinter.Label(Canvas1, text = (LabelText), bg='black', fg='white')
+label1.place(relx=0.1, rely=0.1)
 #moving the shapes
-i = '1'
-while i == '1':
-    for a in range(50):
-        #forward
-        sqx = 0
-        sqy = 5
-        cx = 5
-        cy = 0
-        c.move(circle, cx, cy)
-        c.move(sqr1, sqx, sqy)
-        time.sleep(0.025)
-        c.update()
-        #backwards
-    for a2 in range(50):
-        cx1 = -5
-        sqy1 = -5
-        c.move(sqr1, sqx, sqy1)
-        c.move(circle, cx1, cy)
-        time.sleep(0.025)
-        c.update()
+MoveInPixelsX = 5
+MoveInPixelsY = random.randint(1,15)
+
+while TRUE:
+    LabelText = 'X=' + str(CircleX1) + ' , Y=' + str(CircleY1) + ' , mY=' + str(MoveInPixelsY) + '   '
+    label1 = tkinter.Label(Canvas1, text = (LabelText), bg='black', fg='white')
+    label1.place(relx=0.1, rely=0.1)
+    CircleX1 = CircleX1 + MoveInPixelsX
+    if CircleX1 > 250 or CircleX1 == 0:
+        MoveInPixelsX = MoveInPixelsX * -1
+    CircleY1 = CircleY1 + MoveInPixelsY
+    if CircleY1 >= 250 or CircleY1 <= 0:
+        if MoveInPixelsY <= 0:
+            MoveInPixelsY = random.randint(1,15)
+            Canvas1.moveto(Circle1, CircleX1, 0)
+            CircleY1 = 0        
+        else:
+            MoveInPixelsY = random.randint(1,15)
+            MoveInPixelsY = MoveInPixelsY * -1
+            Canvas1.moveto(Circle1, CircleX1, 250)
+            CircleY1 = 250
+    Canvas1.move(Circle1, MoveInPixelsX, MoveInPixelsY)
+    time.sleep(0.025)
+    Canvas1.update()
 
 #ending window
-window.mainloop()
+Window1.mainloop()

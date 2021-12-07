@@ -3,10 +3,12 @@
 #draw line, circle, square for example 
 #learn how arrays function
 
+import keyboard
 import tkinter
 import time
 import random
 from tkinter.constants import TRUE, X, Y
+     
 #window
 Window1 = tkinter.Tk()
 Window1.title('Shapes')
@@ -38,13 +40,14 @@ label1.place(relx=0.1, rely=0.1)
 #moving the shapes
 MoveInPixelsX = 5
 MoveInPixelsY = random.randint(1,15)
-
+ChangeDirection = False
 while TRUE:
-    LabelText = 'X=' + str(CircleX1) + ' , Y=' + str(CircleY1) + ' , mY=' + str(MoveInPixelsY) + '   '
+    LabelText = 'X=' + str(CircleX1) + ' , Y=' + str(CircleY1) + ' , mY=' + str(MoveInPixelsY) + ' , mX=' + str(MoveInPixelsX) + '   '
     label1 = tkinter.Label(Canvas1, text = (LabelText), bg='black', fg='white')
     label1.place(relx=0.1, rely=0.1)
     CircleX1 = CircleX1 + MoveInPixelsX
-    if CircleX1 > 250 or CircleX1 == 0:
+    if CircleX1 > 250 or CircleX1 == 0 or ChangeDirection == True:
+        ChangeDirection = False
         MoveInPixelsX = MoveInPixelsX * -1
     CircleY1 = CircleY1 + MoveInPixelsY
     if CircleY1 >= 250 or CircleY1 <= 0:
@@ -61,5 +64,11 @@ while TRUE:
     time.sleep(0.025)
     Canvas1.update()
 
+    if keyboard.is_pressed('q'):
+         exit()
+    elif keyboard.is_pressed('c') and ChangeDirection == False:
+        ChangeDirection = True
+
 #ending window
 Window1.mainloop()
+

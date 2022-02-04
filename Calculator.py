@@ -1,64 +1,59 @@
 import math
-#loop
-i = 'on'
-while i == 'on':
+
+# loop
+Loop = True
+while Loop == True:
+
 #first number
     print('enter a number:')
-    a = input()
+    Number1 = input()
+
 #operation
     print('what operation do you want?:')
-    c = input('*, /, +, -, sqrt or sq')
+    Operation = input('*, /, +, -, sqrt or sq')
+
 #square
-    if c== 'sq':
-        print(int(a) * int(a))
+    if Operation.upper() == 'sq':
+        print(int(Number1) * int(Number1))
+        Repeat = input('would you like to repeat? ( Y or N)')
+        if Repeat.upper() == 'Y':
+            Loop = True
+        else:
+            Loop = False
+
 #square root
-    if c == 'sqrt':
-        print(math.sqrt(int(a)))
-#second number
-    if c == 'sqrt':
-        print('would you like to repeat?')
-        x = input('y or n')
-        if x == 'y':
-            i = 'on'
+    if Number1 == 'sqrt':
+        print(math.sqrt(int(Number1)))
+        Repeat = input('would you like to repeat? ( Y or N )')
+        if Repeat.upper() == 'Y':
+            Loop = True
         else:
-            i = 'off'
-            exit()
-    if c == 'sq':
-        print('would you like to repeat? (yes or no)')
-        x = input()
-        if x == 'yes':
-            i = 'on'
-        else:
-            i = 'off'
+            Loop = False
+            quit()
+# Second number
     else:
         print('enter another number:')
-        b = input()
+        Number2 = input()
 
 #adding
-        if c == 'add':
-            print(int(a) + int(b))
-        if c == '+':
-            print(int(a) + int(b))
+        if Operation.upper() == 'add' or '+':
+            print(int(Number1) + int(Number2))
+            
 #subtracting
-        if c == 'subtract':
-            print(int(a) - int(b))
-        if c == '-':
-            print(int(a) - int(b))
+        if Operation.upper() == 'subtract' or '-':
+            print(int(Number1) - int(Number2))
+
 #multiplying
-        if c == 'multiply':
-            print(int(a) * int(b))
-        if c == '*':
-            print(int(a) * int(b))
+        if Operation.upper() == 'multiply' or '*':
+            print(int(Number1) * int(Number2))
 #dividing
-        if c == 'divide':
-            print(int(a) / int(b))
-        if c == '/':
-            print(int(a) / int(b))
+        if Operation.upper() == 'divide' or '/':
+            print(int(Number1) / int(Number2))
 #looping
-        print('would you like to repeat? (yes or no)')
-        d = input()
-        if d == 'yes':
-            i = 'on'
+        RestartLoop = input('would you like to repeat? ( Y or N )')
+        if RestartLoop.upper() == 'Y':
+            Loop = True
         else:
-            i = 'off'
+            Loop = False
+            
             

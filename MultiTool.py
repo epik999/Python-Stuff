@@ -1,28 +1,28 @@
 # Libraries
 import random
 import math
-import colorama
 
 #  Loop
 while True :
     # Tool Choice
-    ToolChoice = input('''
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⢠⡄⠀⠀⠀⠀⠀⠀⢿⡿⠿⠿⠶⣦⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⢼⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⣤⣀⣈⣿⣿⡿⠂⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀ 0: Exit
-    ⠀⠀⢸⡟⣿⡆⠀⠀⠀⠀⠀⠀⠀⠈⠙⠿⡿⠋⣠⡾⢿⡿⢿⣷⡄⠀⠀⠀⠀⠀ 1: Rock Paper Scissors
-    ⠀⠀⠈⣇⢸⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⡷⠀⠀⢾⣿⡇⠀⠀⠀⠀⠀ 2: Calculator
-    ⠀⠀⠀⢹⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣷⣾⣷⡾⠋⣀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠈⣿⣿⣿⡆⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⡿⠋⠠⣾⣿⣇⠀⠀⠀⠀
-    ⠀⠀⠀⠀⢿⣿⣿⣿⡀⠀⣠⣾⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⢼⣿⣿⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠸⣿⡿⠋⣠⣾⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠠⣿⣿⣇⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠉⣠⣾⣿⣿⣿⣿⣿⣿⡿⠋⣀⣀⣀⡀⠀⠀⠀⠀⢾⣿⣿⡄⠀⠀
-    ⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠈⠋⣿⣧⡶⠀⠀⠀⠰⢿⣿⣧⠀⠀
-    ⠀⠀⠀⠀⠀⠘⢿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠘⠛⣿⣷⡿⠀⠀⠀⠸⠟⠋⠀⠀
-    ⠀⠀⠀⠀⢀⣠⣤⡉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠿⠟⠃⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⣀⠴⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    What tool do you want? : ''')
+    print('''
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+     0: Exit
+     1: Rock Paper Scissors
+     2: Calculator
+     3: Dice Roll
+
+
+
+
+
+
+
+
+    ''')
+
+    ToolChoice = input("Choose a Tool : ")
 
     # Rock Paper Scissors Function
     def Player1() :
@@ -103,6 +103,37 @@ while True :
             if Operation.upper() in ("*", "MULTIPLY", "TIMES") :
                 print(int(Number1)*int(Number2))
 
+    # Dice Function
+    def Dice() :
+        DiceAmount = input("How many Dice? : ")
+        DiceAmountCheck = False
+
+        # Checks if DiceAmount is an integer
+        if str.isdigit(DiceAmount) == False:
+            DiceAmountCheck = True
+            while DiceAmountCheck == True :
+                print("Enter a Number!")
+                DiceAmount = input("How many Dice : ")
+                if str.isdigit(DiceAmount) == True :
+                    DiceAmountCheck = False
+        
+        # Dice Sides
+        DiceSides = input("How many Sides? : ")
+        DiceSidesCheck = False
+
+        # Checks if DiceSides is an integer
+        if str.isdigit(DiceSides) == False :
+            DiceSidesCheck = True
+            while DiceSidesCheck == True :
+                print("Enter a Number!")
+                DiceSides = input("How many Sides? : ")
+                if str.isdigit(DiceSides) == True :
+                    DiceSidesCheck = False
+        
+        # Rolls Dice
+        for x in range(int(DiceAmount)) : 
+            print(random.randint(1,int(DiceSides)))
+
     # Exit (Tool 0)
     if ToolChoice == "0" :
         exit()
@@ -120,5 +151,10 @@ while True :
     if ToolChoice == "2":
 
         Calculator()
+
+    # Dice Roll (Tool 3)
+    if ToolChoice == "3" :
+
+        Dice()
 
 

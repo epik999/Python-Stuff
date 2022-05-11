@@ -1,29 +1,46 @@
 # Libraries
 import random
 import math
+import time
+import sys
+from pystyle import Colorate, Colors, Center, Write
 
-#  Loop
+#  Startup Sequence
+    
+print(Colorate.Vertical(Colors.green_to_cyan,(Center.XCenter('''
+        &&
+      &&&&&
+    &&&\/& &&&          
+   &&|,/  |/& &&            
+    &&/   /  /_&  &&            0: Exit               
+      \  {  |_____/_&           1: Rock Paper Scissors
+      {  / /          &&&       2: Calculator  
+      `, \{___________/_&&      3: Dice
+       } }{       \ 
+       }{         \____&
+       }{           `&\&&
+      {{}             &&
+, -=-~{ .-^- _   
+      `}
+       {
+''')), 1))
+
+# Loading Animation
+animation = [ "[█□□□□□□□□□] 10%","[██□□□□□□□□] 20%",  "[███□□□□□□□] 30%", "[████□□□□□□] 40%", "[█████□□□□□] 50%", "[██████□□□□] 60%", "[███████□□□] 70%", "[████████□□] 80%", "[█████████□] 90%", "[██████████] 100%"]
+for Load in range(len(animation)):
+    time.sleep(0.1)
+    sys.stdout.write("\r" + animation[Load % len(animation)])
+    sys.stdout.flush()
+
+Write.Print("\n \nMultiTool loading is complete... ", Colors.green_to_cyan, interval=0.0001)
+
+# Loop
 while True :
+
+    Write.Print("\n \n   Choose a tool : ", Colors.green_to_cyan, interval=0.0001)
+
     # Tool Choice
-    print('''
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-
-     0: Exit
-     1: Rock Paper Scissors
-     2: Calculator
-     3: Dice Roll
-
-
-
-
-
-
-
-
-    ''')
-
-    ToolChoice = input("Choose a Tool : ")
-
+    ToolChoice = input(" ")
     # Rock Paper Scissors Function
     def Player1() :
 
@@ -67,41 +84,56 @@ while True :
                 Number1 = input("Enter Number : ")
                 if str.isdigit(Number1) == True :
                     INTCheck1 = False
+        
+        for x in range(1) :
+            # Asks for Operation
+            Operation = input("Enter Operation : ")
+            
+            # Checks Operation
+            if Operation.upper() not in ("ADD", "PLUS", "+", "TAKE AWAY", "SUBTRACT", "-", "/", "DIVIDE", "SQUARE", "SQ", "SQRT", "SQUARE ROOT"):
+                OpCheck = True
+                while OpCheck == True :
+                    print("Please enter a Supported Operation!")
+                    Operation = input("Enter Operation : ")
+                    if Operation.upper() in ("ADD", "PLUS", "+", "TAKE AWAY", "SUBTRACT", "-", "/", "DIVIDE", "SQUARE", "SQ", "SQRT", "SQUARE ROOT") :
+                        OpCheck = False
 
-        # Asks for Operation
-        Operation = input("Enter Operation : ")
-        if Operation.upper() in ("SQUARE", "SQ") :
-            print(float(Number1)*float(Number1))
-        if Operation.upper() in ("SQRT", "SQUARE ROOT") :
-            print(math.sqrt(float(Number1)))
-        else :
-            # Asks for second number if operation is not squaring or square root
-            Number2 = input("Enter another Number : ")
-
-            # Checks if Number2 is an integer
-            if str.isdigit(Number2) == False :
-                INTCheck2 = True
-                while INTCheck2 == True :
-                    print("Please enter an Integer!")
-                    Number2 = input("Enter another Number : ")
-                    if str.isdigit(Number2) == True :
-                        INTCheck2 = False
-
-            # Adding
-            if Operation.upper() in ("ADD", "PLUS", "+") :
-                print(int(Number1)+int(Number2))
-
-            # Subtracting
-            if Operation.upper() in ("TAKE AWAY", "SUBTRACT", "-") :
-                print(int(Number1)-int(Number2))
-
-            # Dividing
-            if Operation.upper() in ("/", "DIVIDE") :
-                print(int(Number1)/int(Number2))
-
-            # Multiplying
-            if Operation.upper() in ("*", "MULTIPLY", "TIMES") :
-                print(int(Number1)*int(Number2))
+            # Performs operation
+            if Operation.upper() in ("SQUARE", "SQ") :
+                print(float(Number1)*float(Number1))
+                break
+            if Operation.upper() in ("SQRT", "SQUARE ROOT") :
+                print(math.sqrt(float(Number1)))
+                break
+            else :
+                
+                # Asks for second number if operation is not squaring or square root
+                Number2 = input("Enter another Number : ")
+                
+                # Checks if Number2 is an integer
+                if str.isdigit(Number2) == False :
+                    INTCheck2 = True
+                    while INTCheck2 == True :
+                        print("Please enter an Integer!")
+                        Number2 = input("Enter another Number : ")
+                        if str.isdigit(Number2) == True :
+                            INTCheck2 = False
+                
+                # Adding
+                if Operation.upper() in ("ADD", "PLUS", "+") :
+                    print(int(Number1)+int(Number2))
+                
+                # Subtracting
+                if Operation.upper() in ("TAKE AWAY", "SUBTRACT", "-") :
+                    print(int(Number1)-int(Number2))
+                
+                # Dividing
+                if Operation.upper() in ("/", "DIVIDE") :
+                    print(int(Number1)/int(Number2))
+                
+                # Multiplying
+                if Operation.upper() in ("*", "MULTIPLY", "TIMES") :
+                    print(int(Number1)*int(Number2))
 
     # Dice Function
     def Dice() :
@@ -133,7 +165,7 @@ while True :
         # Rolls Dice
         for x in range(int(DiceAmount)) : 
             print(random.randint(1,int(DiceSides)))
-
+                    
     # Exit (Tool 0)
     if ToolChoice == "0" :
         exit()
@@ -152,9 +184,8 @@ while True :
 
         Calculator()
 
+
     # Dice Roll (Tool 3)
     if ToolChoice == "3" :
 
         Dice()
-
-

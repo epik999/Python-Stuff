@@ -6,7 +6,7 @@ while Loop == True :
     Word = input()
     print(Word[::-1])
     print('Would you like to go again?')
-    Answer = input('y or n : ')
+    Answer = input('Yes or No : ')
     if Answer.upper() in ('YES', 'Y') :
         Loop = True
     else:

@@ -1,18 +1,14 @@
 import time
-#loop start
-i = 'on'
-while i == 'on':
-#main
+
+Loop = True
+while Loop == True :
     print('enter a word:')
-    name = input()
-    print(name[::-1])
-#Loop ans
+    Word = input()
+    print(Word[::-1])
     print('Would you like to go again?')
-    ans = input('y or n : ')
-#looping
-    if ans == 'y':
-        i = 'on'
+    Answer = input('y or n : ')
+    if Answer.upper() in ('YES', 'Y') :
+        Loop = True
     else:
-        print('Thanks for using!')
-        i = 'off'
+        Loop = False
         time.sleep(2); exit()

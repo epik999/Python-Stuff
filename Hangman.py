@@ -21,9 +21,8 @@ while GuessedWord == False :
       break
     
     CorrectWord = [characters in LettersGuessed for characters in WordChosen]
-    HaveCorrectWord = all(CorrectWord)
 
-    if HaveCorrectWord == True :
+    if all(CorrectWord) == True :
       GuessedWord = True
        
   if GuessedWord == True :

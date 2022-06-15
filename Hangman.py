@@ -1,5 +1,6 @@
 import random
 import os
+import time
 
 def ConsoleClear() : # creates function to clear the console
   os.system("cls")
@@ -136,3 +137,4 @@ while GuessedWord == False :
   if GuessedWord == True :
     print('You won the word was :', WordChosen)
     GuessedWord = True
+time.sleep(2)

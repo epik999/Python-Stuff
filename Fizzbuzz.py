@@ -29,6 +29,5 @@ while i == 'on':
     if ans == 'y' :
         i = 'on'
     else:
-        print('Thanks for playing')
         i = 'off'
         time.sleep(2); exit()

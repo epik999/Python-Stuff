@@ -1,23 +1,19 @@
 import random
 
-# original lists
-ChooseFrom = ('Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5')
-list = []
+WordsAmount = input('How many different words? : ') # Self explanatory
+WordsArray = []
 
-optioncount = 5
+for b in range(int(WordsAmount)) :
+  WordsArray.append(input('Word ' + str(b+1) + ' of ' + WordsAmount + ': ')) # tells you what word you are entering
 
+RandomWords = []
+PrintAmount = input('How many times to print? : ') # self explanatory again
 
-# list maker
-for x in range(100):
-    printer = random.choice(ChooseFrom)
-    list.append(str(printer))
+for x in range(int(PrintAmount)) :
+  RandomWords.append(random.choice(WordsArray)) # chooses a random word from the words the user chose
 
-# Printing List
-print(str(list))
-
-# space
+print(str(RandomWords)) # prints all the words randomly chosen
 print(' ')
 
-# Word Count
-for x in range(0, optioncount) :
-    print( ' Option '+ str(x + 1) + ' appears : ' + (str(list.count('Option ' + str(x + 1)))) + ' times!' )
+for x in range(int(WordsAmount)) :
+  print(WordsArray[x] + ' found ' + str(RandomWords.count(WordsArray[x])) + ' times') # counts how many times each word appears and prints it

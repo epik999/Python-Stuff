@@ -1,0 +1,79 @@
+def FizzBuzz() : # FizzBuzz
+  IntCheck = False
+  
+  Lowest = input("Enter a Number : ") # Enters the first number
+  if Lowest.isdigit() == False : # Checks if a Number
+    IntCheck = True
+    while IntCheck == True :
+      print("Enter a Number!")
+      Lowest = input("Enter a Number : ")
+      if Lowest.isdigit() == True :
+        IntCheck = False
+  ConsoleClear()
+
+  print('The Lowest Number is', Lowest)
+  Highest = input("Enter another Number : ") # Enters the second number
+  if Highest.isdigit() == False : # Checks if a Number
+    IntCheck = True
+    while IntCheck == True :
+      print("Enter a Number!")
+      Highest = input("Enter another Number : ")
+      if Highest.isdigit() == True :
+        IntCheck = False
+  ConsoleClear()
+
+  Divider1 = input("Enter a Number to Divide by : ") # Fizz Divider
+  if Divider1.isdigit() == False : # Checks if a Number
+    IntCheck = True
+    while IntCheck == True :
+      print("Enter a Number!")
+      Divider1 = input("Enter a Number to Divide by : ") 
+      if Divider1.isdigit() == True :
+        IntCheck = False
+  ConsoleClear()
+
+  print('The first Divider is', Divider1)
+  Divider2 = input("Enter another Number to Divide by : ") # Buzz Divider
+  if Divider2.isdigit() == False : # Checks if a Number
+    IntCheck = True
+    while IntCheck == True :
+      print("Enter a Number!")
+      Divider2 = input("Enter another Number to Divide by : ")
+      if Divider2.isdigit() == True :
+        IntCheck = False
+  ConsoleClear()
+  
+  if int(Highest) >= int(Lowest) :
+    print(' The Lowest Number is', Lowest)
+    print(' The Highest Number is', Highest)
+    print(' Fizz = Multiple of', Divider1)
+    print(' Buzz = Multiple of', Divider2)
+    print(' ')
+    for x in range(int(Lowest), int(Highest) + 1) :
+      if x%int(Divider1) == 0 and x%int(Divider2) == 0 :  
+        print('FizzBuzz')
+      elif x%int(Divider1) == 0 :
+        print('Fizz')
+      elif x%int(Divider2) == 0 :
+        print('Buzz')
+      else: 
+        print(x)
+
+  if int(Highest) <= int(Lowest) :
+    print(' The Lowest Number is', Highest)
+    print(' The Highest Number is', Lowest)
+    print(' Fizz = Multiple of', Divider1)
+    print(' Buzz = Multiple of', Divider2)
+    print(' ')
+    for x in range(int(Highest), int(Lowest) + 1) :
+      if x%int(Divider1) == 0 and x%int(Divider2) == 0 :
+        print('FizzBuzz')
+      elif x%int(Divider1) == 0 :
+        print('Fizz')
+      elif x%int(Divider2) == 0 :
+        print('Buzz')
+      else: 
+        print(x)
+
+ConsoleClear()
+FizzBuzz()

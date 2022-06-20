@@ -1,8 +1,6 @@
 #arrays
 import tkinter
 import random
-import time
-from typing import Text
 wordlist = ('Welcome', 'Python', 'Monopoly', 'Coding')
 randword = random.choice(wordlist)
 window = tkinter.Tk()
